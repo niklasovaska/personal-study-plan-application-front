@@ -1,0 +1,13 @@
+.course_card {
+    margin-top: 12px;
+    cursor: grab;
+}
+
+.course_card :active {
+    cursor: grabbing;
+}
+
+.drop_area {
+    margin-top: 12px;
+    border-style: dashed;
+}
