@@ -42,7 +42,6 @@ const AddCourseModal = ({ courses, setCourses, openModal, handleClose }) => {
         const newCourse = {
             ...form,
             credits: parseInt(form.credits),
-            grade: null,
             status: 'upcoming'
         }
 

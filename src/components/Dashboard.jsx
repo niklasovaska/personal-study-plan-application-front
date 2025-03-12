@@ -21,7 +21,7 @@ const Dashboard = ({ courses }) => {
 
     const weightedAverage = (arr) => {
 
-        const nom = arr.reduce((sum, c) => sum += c.credits * c.grade, 0)
+        const nom = arr.reduce((sum, c) => sum += c.credits * parseInt(c.grade), 0)
         const denom = arr.reduce((sum, c) => sum += c.credits, 0)
         return (nom / denom).toFixed(2)
     }
