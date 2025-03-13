@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react'
 import courseService from './services/courses'
 import { ThemeProvider, createTheme} from '@mui/material/styles';

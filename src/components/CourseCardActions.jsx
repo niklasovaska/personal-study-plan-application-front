@@ -1,4 +1,3 @@
-/* eslint-disable */
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
@@ -102,6 +101,7 @@ const CourseCardActions = ({ courses, setCourses, id }) => {
     const handleDelete = () => {
         courseService
             .deleteCourse(id).then(returnedCourse => {
+                console.log(returnedCourse)
                 setCourses(courses.filter(course => course.id !== id))
             })
             .catch(error => {

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Box, Stack, Typography, Switch } from "@mui/material"
 
 const ToggleSwitch = ({ showUpcoming, setShowUpcoming }) => {

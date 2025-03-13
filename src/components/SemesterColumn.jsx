@@ -1,4 +1,3 @@
-/* eslint-disable */
 import Paper from '@mui/material/Paper'
 import CourseCard from './CourseCard'
 import Typography from '@mui/material/Typography'
@@ -15,20 +14,19 @@ const SemesterColumn = ({ title, courses, setCourses, handleOnDrop, onDrag, show
             backgroundColor: '#1A2027',
           }),
       }));
-
-
-    const semesterTitleStyle = {
-        padding: 4,
-        textAlign: 'center',
-        borderRadius: 4,
-        bgcolor: 'secondary.dark'
-    }
    
     const semesterCourses = courses.filter((course) => course.status === status)
 
+    const semesterCoursesCredits = semesterCourses.reduce((sum, course) => {
+        return sum += course.credits
+    }, 0)
+
     return(
         <>
-            <SemesterTitle ><Typography sx={{typography: {xs: 'body2', sm: 'body1', md: 'h6'}}}>{title}</Typography></SemesterTitle>
+            <SemesterTitle >
+                <Typography sx={{typography: {xs: 'body2', sm: 'body1', md: 'h6'}}}>{title}</Typography>
+                <Typography color='text.secondary'>{semesterCoursesCredits} credits</Typography>
+            </SemesterTitle>
             {semesterCourses.map(course => <CourseCard 
                 key={course.id}
                 name={course.name} 

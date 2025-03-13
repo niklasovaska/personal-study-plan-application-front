@@ -1,4 +1,3 @@
-/* eslint-disable */
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
@@ -16,11 +15,9 @@ const CourseCard = ({ name, id, credits, courses, setCourses, handleOnDrop, onDr
         console.log(`Dragged over`)
     }
 
-
-
-    const CardItem = ({ title, subtitle, courses, setCourses, id }) => {
+    const CardItem = ({ title, subtitle, courses, setCourses, id, bgcolor }) => {
         return(
-            <Card onMouseOver={() => setHover(true) } onMouseLeave={() => setHover(false)}>
+            <Card onMouseOver={() => setHover(true) } onMouseLeave={() => setHover(false)} sx={{bgcolor: bgcolor}}>
                 <CardContent>
                     <Typography sx={{typography: {xs: 'body2', sm: 'body1', md: 'h6'}}}>{title}</Typography>
                     <Typography color='text.secondary'>{subtitle}</Typography>
@@ -32,16 +29,6 @@ const CourseCard = ({ name, id, credits, courses, setCourses, handleOnDrop, onDr
 
     return(
         <>
-            {showDropArea && 
-                <div
-                    className='drop_area'
-                    onDrop={(e) => handleOnDrop(e, status)} 
-                    onDragOver={handleDragOver}>
-                    <CardItem 
-                        title='Drop' 
-                        subtitle='Schedule here' 
-                        />
-                </div>}
             <div 
                 draggable
                 className='course_card'
@@ -55,6 +42,17 @@ const CourseCard = ({ name, id, credits, courses, setCourses, handleOnDrop, onDr
                     setCourses={setCourses} 
                     id={id} />
             </div>
+            {showDropArea && 
+                <div
+                    className='drop_area'
+                    onDrop={(e) => handleOnDrop(e, status)} 
+                    onDragOver={handleDragOver}>
+                    <CardItem 
+                        title='Drop' 
+                        subtitle='Schedule here'
+                        bgcolor='#757575'
+                        />
+                </div>}
         </>
     ) 
 }

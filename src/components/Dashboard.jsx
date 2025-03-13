@@ -1,4 +1,3 @@
-/* eslint-disable */
 import CircularProgress from '@mui/material/CircularProgress'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
@@ -30,6 +29,10 @@ const Dashboard = ({ courses }) => {
         width: 300,
         padding: theme.spacing(4),
         textAlign: 'center',
+        backgroundColor: '#fff',
+        ...theme.applyStyles('dark', {
+            backgroundColor: '#1A2027',
+          })
       }));
 
     const ProgressChart = (props) => {

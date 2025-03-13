@@ -1,9 +1,8 @@
-/* eslint-disable */
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid2'
-import Paper from '@mui/material/Paper'
 import SemesterColumn from './SemesterColumn'
 import courseService from '../services/courses'
+import Swal from 'sweetalert2'
 import { useState } from 'react'
 
 const UpcomingCourses = ({ courses, setCourses}) => {
@@ -21,6 +20,11 @@ const UpcomingCourses = ({ courses, setCourses}) => {
         setShowDropArea(false)
 
         const course = courses.find(c => c.id === draggedCourseId)
+
+        if (course.status === status) {
+            return
+        }
+
         const changedCourse = {...course, status: status}
 
         courseService
@@ -28,7 +32,16 @@ const UpcomingCourses = ({ courses, setCourses}) => {
             .then(res => {
                 setCourses(courses.map(c => c.id === draggedCourseId ? res.data : c))
             })
-
+        
+        Swal.fire({
+            theme: 'dark',
+            icon: 'success',
+            title: 'Success!',
+            text: 'Course rescheduled',
+            showConfirmButton: false,
+            timer: 3000
+        })
+        
         setDraggedCourseId(null)
     }
 

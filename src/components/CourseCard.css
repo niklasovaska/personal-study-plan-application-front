@@ -9,5 +9,5 @@
 
 .drop_area {
     margin-top: 12px;
-    border-style: dashed;
+    border: 1px dashed;
 }
